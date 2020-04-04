@@ -13,6 +13,7 @@ public class Factura {
 		this.miCliente = miCliente;
 		this.id = id;
 	}
+	
 	public ArrayList<Queso> getMisQuesos() {
 		return misQuesos;
 	}
@@ -28,6 +29,7 @@ public class Factura {
 	public String getId() {
 		return id;
 	}
+	
 	
 	public float totalFactura() {
 		float total = 0;

@@ -1,10 +1,11 @@
 package Logico;
 
 public class Cliente {
+	private String id;
 	private String nombre;
 	private	String direccion;
 	private String telefono;
-	private String id;
+	
 	
 	public Cliente(String nombre, String direccion, String telefono, String id) {
 		super();

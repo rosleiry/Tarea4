@@ -1,9 +1,11 @@
 package Logico;
 
 public abstract class Queso {
+	protected String id;
 	protected float precioBase;
 	protected float precioUnitario;
-	protected String id;
+	
+	
 	public Queso(float precioBase, float precioUnitario, String id) {
 		super();
 		this.precioBase = precioBase;
