@@ -18,6 +18,7 @@ import Logico.Fabrica;
 import Logico.Factura;
 import Logico.Queso;
 
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
@@ -245,8 +246,8 @@ public class Facturar extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("GENERAR FACTURA");
-				okButton.addActionListener(new ActionListener() {
+				JButton btnGenerarFactura = new JButton("GENERAR FACTURA");
+				btnGenerarFactura.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(txtNombre.getText().equalsIgnoreCase("")|| txtDireccion.getText().equalsIgnoreCase("") || txtTelefono.getText().equalsIgnoreCase("") || txtid.getText().equalsIgnoreCase(""))
 						{
@@ -274,6 +275,7 @@ public class Facturar extends JDialog {
 								Factura fact = new Factura(aux, "F-"+(Fabrica.getInstance().getMisFacturas().size()+1), misquesos);
 								Fabrica.getInstance().getMisFacturas().add(fact);
 								JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+								btnGenerarFacturaActionPerformed(e);
 								clean();
 							}
 						}else {
@@ -298,6 +300,7 @@ public class Facturar extends JDialog {
 							Factura fact = new Factura(aux, "F-"+(Fabrica.getInstance().getMisFacturas().size()+1), misquesos);
 							Fabrica.getInstance().getMisFacturas().add(fact);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+							btnGenerarFacturaActionPerformed(e);
 							clean();
 						}
 						}
@@ -326,10 +329,10 @@ public class Facturar extends JDialog {
 						
 					}
 				});
-				okButton.setBackground(SystemColor.inactiveCaptionBorder);
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				btnGenerarFactura.setBackground(SystemColor.inactiveCaptionBorder);
+				btnGenerarFactura.setActionCommand("OK");
+				buttonPane.add(btnGenerarFactura);
+				getRootPane().setDefaultButton(btnGenerarFactura);
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
@@ -344,4 +347,9 @@ public class Facturar extends JDialog {
 			}
 		}
 	}
+	
+	   private void btnGenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {
+
+	        this.dispose();
+	    }
 }
