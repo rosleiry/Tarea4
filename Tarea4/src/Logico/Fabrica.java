@@ -1,6 +1,13 @@
 package Logico;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
 
 
 public class Fabrica {
@@ -23,6 +30,15 @@ public class Fabrica {
 		 
 		 return fabri;
 	 } 
+	
+	public static Fabrica getTienda() {
+		return fabri;
+	}
+
+
+	public static void setFabrica(Fabrica fabri) {
+		Fabrica.fabri = fabri;
+	}
 
 	public ArrayList<Queso> getMisQuesos() {
 		return misQuesos;
@@ -126,6 +142,46 @@ public class Fabrica {
 			return aux.esferaMayor();
 		}
 		return null;
+		
+	}
+	
+	public void cargarDatos() {
+		try {
+			FileInputStream input = new FileInputStream("Data/Fabrica.txt");
+			ObjectInputStream inputFabrica = new ObjectInputStream(input);
+			
+			Fabrica aux = (Fabrica) inputFabrica.readObject();
+			Fabrica.setFabrica(aux);
+			
+			inputFabrica.close();
+			input.close();
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error: Clase no encontrada");
+		} catch(FileNotFoundException e) {
+			guardarDatos();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void guardarDatos() {
+		
+		try {	
+			 FileOutputStream output = new FileOutputStream("Data/Fabrica.txt");
+			 ObjectOutputStream outputFabrica = new ObjectOutputStream(output);
+			  
+			 outputFabrica.writeObject(fabri);
+				
+			 outputFabrica.close();
+			 output.close();
+		
+		}catch (FileNotFoundException e) {
+			System.out.println("Error: Archivo no Encontrado");
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

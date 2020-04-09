@@ -245,7 +245,7 @@ public class Facturar extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Facturar");
+				JButton okButton = new JButton("GENERAR FACTURA");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(txtNombre.getText().equalsIgnoreCase("")|| txtDireccion.getText().equalsIgnoreCase("") || txtTelefono.getText().equalsIgnoreCase("") || txtid.getText().equalsIgnoreCase(""))
